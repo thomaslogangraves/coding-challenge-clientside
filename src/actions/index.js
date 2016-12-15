@@ -11,3 +11,11 @@ export function deleteReferral(index){
     index
   }
 }
+
+
+export function requestReferrals(){
+  return {
+    type: 'requestReferrals',
+    result: makeReferralsRequest("http//:referraly.heroku.com/referrals/")
+  }
+}
