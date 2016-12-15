@@ -1,6 +1,9 @@
-import Immutable from 'immutable'
 
-export default (state = Immutable.List([referral]), action) => {
+const initialState = {
+  makeReferralsRequest('https://referly-api.herokuapp.com/')
+}
+
+export default (state = initialState, action) => {
   switch(action.type) {
     case 'addReferral':
       return state.push(action.referral)
