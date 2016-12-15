@@ -11,7 +11,7 @@ import { Provider } from "react-redux"
 import thunk from "redux-thunk"
 
 import * as reducers from "./reducers"
-import AppContainer from "./containers/AppContainer"
+import AppContainer from "./containers/appContainer"
 
 let finalCreateStore = compose(
   applyMiddleware(thunk),
