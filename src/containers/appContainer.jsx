@@ -2,7 +2,7 @@ import React from "react"
 
 import { connect } from "react-redux"
 
-import * as actionsReferrals from "../actions/actionsReferrals"
+import * as referralActions from "../actions/referralActions"
 import Referrals from "../components/Referrals"
 
 @connect(state => ({
@@ -12,7 +12,7 @@ export default class App1Container extends React.Component {
   componentDidMount() {
     let {dispatch, referrals} = this.props
     if (!referrals.isLoadingReferrals && referrals.referrals === undefined) {
-      dispatch(actionsReferrals.fetchReferrals())
+      dispatch(referralActions.fetchReferrals())
     }
   }
 

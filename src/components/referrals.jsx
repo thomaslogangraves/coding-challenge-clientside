@@ -1,17 +1,21 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from "react"
 
-const Referrals = ({referrals}) => (
-  <div>
-    <h1>Referrals</h1>
-    {referrals.map(referral => <p key={referral}>{referral}</p>)}
-  </div>
-)
+export default class Referrals extends React.Component {
+  render() {
+    let  { referrals } = this.props
+    let referralList = []
+    referrals.forEach((item, index) => {
+      let ref = (
+        <div key={item.id}>
+          <h1>{item.title}</h1>
+          <h1>{item.clicks}</h1>
+        </div>
+      )
+      referralList.push(ref)
+    })
 
-function mapStateToProps(referrals) {
-  return {
-    referrals
+    return (
+      <div>{referralList}</div>
+    )
   }
 }
-
-export default connect(mapStateToProps)(Referrals)
