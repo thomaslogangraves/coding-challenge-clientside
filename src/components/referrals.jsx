@@ -1,6 +1,6 @@
 import React from "react"
 
-export default class Referrals extends React.Component {
+export default class ReferralComponent extends React.Component {
   render() {
     let  { referrals } = this.props
     let referralList = []

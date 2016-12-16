@@ -3,8 +3,11 @@ import React from "react"
 import { connect } from "react-redux"
 
 import * as referralActions from "../actions/referralActions"
-import Referrals from "../components/referrals"
+import ReferralComponent from "../components/referrals"
 
+@connect(state => ({
+  referrals: state.referrals,
+}))
 export default class AppContainer extends React.Component {
   componentDidMount() {
     let {dispatch, referrals} = this.props
@@ -12,6 +15,7 @@ export default class AppContainer extends React.Component {
       dispatch(referralActions.fetchReferrals())
     }
   }
+
 
   renderLoading() {
     return (
@@ -26,7 +30,7 @@ export default class AppContainer extends React.Component {
   }
 
   render() {
-    let { referrals } = this.props
+    let { counters, referrals } = this.props
     if (referrals.isLoadingReferrals || referrals.referrals === undefined) {
       return this.renderLoading()
     }
@@ -36,7 +40,7 @@ export default class AppContainer extends React.Component {
           <div className="col-sm-12">
             <p>{process.env.BASE_API_URL}</p>
             {referrals.referrals !== undefined &&
-              <Referrals referrals={referrals.referrals} />
+              <ReferralComponent referrals={referrals.referrals} />
             }
           </div>
         </div>
