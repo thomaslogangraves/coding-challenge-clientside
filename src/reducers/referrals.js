@@ -1,11 +1,6 @@
 import * as referralActions from "../actions/referralActions"
 
-const initialState = {
-  isLoadingReferrals: false,
-  referrals: undefined,
-}
-
-export default function referrals(state=initialState, action={}) {
+const referrals = (state, action) => {
   switch (action.type) {
   case referralActions.FETCH_REFERRALS:
     return {...state, isLoadingReferrals: true}
@@ -19,3 +14,5 @@ export default function referrals(state=initialState, action={}) {
     return state
   }
 }
+
+export default referrals
