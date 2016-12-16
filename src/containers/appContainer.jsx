@@ -1,12 +1,12 @@
 import React from "react"
 import { connect } from "react-redux"
 import * as referralActions from '../actions/referralActions'
-import ReferralComponent from "../components/referrals"
+import Referral from "../components/referrals"
 
 const AppContainer = React.createClass ({
   componentDidMount() {
     debugger;
-    let {dispatch, referrals, isLoadingReferrals} = this.props
+    let {dispatch, referrals, isLoadingReferrals, error} = this.props
     if (!isLoadingReferrals && referrals === undefined) {
       dispatch(referralActions.getReferrals())
     }
@@ -25,8 +25,7 @@ const AppContainer = React.createClass ({
   },
 
   render() {
-    console.log("these are props", this.props)
-    let { referrals, isLoadingReferrals } = this.props
+    let { referrals, isLoadingReferrals, error } = this.props
     console.log("after grabbed", isLoadingReferrals)
     if (isLoadingReferrals || referrals === undefined) {
       return this.renderLoading()
@@ -37,7 +36,7 @@ const AppContainer = React.createClass ({
           <div className="col-sm-12">
             <p>{process.env.BASE_API_URL}</p>
             {referrals.referrals !== undefined &&
-              <ReferralComponent referrals={referrals.referrals} />
+              <Referral referrals={referrals.referrals} />
             }
           </div>
         </div>
@@ -48,7 +47,8 @@ const AppContainer = React.createClass ({
 
 const mapStateToProps = (state) => (
   { referrals: state.referrals,
-    isLoadingReferrals: state.isLoadingReferrals
+    isLoadingReferrals: state.isLoadingReferrals,
+    error: state.error
   }
 )
 

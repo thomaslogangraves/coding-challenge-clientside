@@ -22,9 +22,9 @@ function receiveError(json) {
 	}
 };
 
-export function fetchData(url) {
+export function getReferrals(url) {
+  console.log("inside getReferrals")
 	return function(dispatch) {
-    let url = "https://referly-api.herokuapp.com/referrals.json"
 		dispatch(requestData());
 		return axios({
 			url: url,

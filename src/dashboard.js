@@ -2,7 +2,8 @@ import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => (
   { referrals: state.referrals,
-    isLoadingReferrals: state.isLoadingReferrals
+    isLoadingReferrals: state.isLoadingReferrals,
+    error: state.error
   }
 )
 

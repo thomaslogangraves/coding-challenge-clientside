@@ -1,4 +1,6 @@
 import * as types from '../actions/actionTypes'
+import { combineReducers } from 'redux';
+import { routerStateReducer } from 'redux-react-router';
 
 const initialState = {
   isLoadingReferrals: false,
@@ -6,7 +8,7 @@ const initialState = {
   error: false
 }
 
-const reduceReferrals = (state, action=null) => {
+const reduceReferrals = (state=initialState, action=null) => {
   console.log(state, action)
   switch(action.type) {
   case types.FETCH_REFERRALS_FAILURE:
@@ -17,17 +19,22 @@ const reduceReferrals = (state, action=null) => {
     return Object.assign({}, state, {isLoadingReferrals: true, error: false });
   default:
     return state;
-}
-}
-
-export const rootReducer = (state = initialState, action) => {
-  console.log(state, action)
-  switch (action.type) {
-    case types.REQUEST_REFERRALS:
-      return reduceReferrals(state, action)
-    default:
-      return state
   }
 }
+
+// export const rootReducer = (state = initialState, action) => {
+//   console.log(state, action)
+//   switch (action.type) {
+//     case types.REQUEST_REFERRALS:
+//       return reduceReferrals(state, action)
+//     default:
+//       return state
+//   }
+// }
+
+const rootReducer = combineReducers({
+	router: routerStateReducer,
+	reduceReferrals: reduceReferrals
+});
 
 export default rootReducer
