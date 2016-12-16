@@ -1,17 +1,15 @@
 import React from "react"
-
 import { connect } from "react-redux"
 
 import ReferralComponent from "../components/referrals"
 
-export default class AppContainer extends React.Component {
+class AppContainer extends React.Component ({
   componentDidMount() {
     let {dispatch, referrals} = this.props
     if (!referrals.isLoadingReferrals && referrals.referrals === undefined) {
       dispatch(referralActions.fetchReferrals())
     }
-  }
-
+  },
 
   renderLoading() {
     return (
@@ -23,9 +21,10 @@ export default class AppContainer extends React.Component {
         </div>
       </div>
     )
-  }
+  },
 
   render() {
+    console.log(this.props)
     let { counters, referrals } = this.props
     if (referrals.isLoadingReferrals || referrals.referrals === undefined) {
       return this.renderLoading()
@@ -43,4 +42,6 @@ export default class AppContainer extends React.Component {
       </div>
     )
   }
-}
+})
+
+export default connect(AppContainer)

@@ -1,5 +1,4 @@
 import * as types from '../actions/actionTypes'
-import { connet } from 'react-redux'
 
 const initialState = {
   isLoadingReferrals: false,
@@ -8,7 +7,7 @@ const initialState = {
 
 const reduceReferrals = (state, action) => {
   const newState = {}
-  Object.assign(newState, state, {referrals: action.payload})
+  Object.assign(newState, state, {referrals: action})
 }
 
 export const rootReducer = (state = initialState, action) => {
