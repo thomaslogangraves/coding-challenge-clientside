@@ -1,13 +1,14 @@
 import React from "react"
 import { connect } from "react-redux"
-
+import * as referralActions from '../actions/referralActions'
 import ReferralComponent from "../components/referrals"
 
-class AppContainer extends React.Component ({
+const AppContainer = React.createClass ({
   componentDidMount() {
-    let {dispatch, referrals} = this.props
-    if (!referrals.isLoadingReferrals && referrals.referrals === undefined) {
-      dispatch(referralActions.fetchReferrals())
+    debugger;
+    let {dispatch, referrals, isLoadingReferrals} = this.props
+    if (!isLoadingReferrals && referrals === undefined) {
+      dispatch(referralActions.getReferrals())
     }
   },
 
@@ -24,9 +25,10 @@ class AppContainer extends React.Component ({
   },
 
   render() {
-    console.log(this.props)
-    let { counters, referrals } = this.props
-    if (referrals.isLoadingReferrals || referrals.referrals === undefined) {
+    console.log("these are props", this.props)
+    let { referrals, isLoadingReferrals } = this.props
+    console.log("after grabbed", isLoadingReferrals)
+    if (isLoadingReferrals || referrals === undefined) {
       return this.renderLoading()
     }
     return (
@@ -44,4 +46,18 @@ class AppContainer extends React.Component ({
   }
 })
 
-export default connect(AppContainer)
+const mapStateToProps = (state) => (
+  { referrals: state.referrals,
+    isLoadingReferrals: state.isLoadingReferrals
+  }
+)
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      getReferrals () {
+        dispatch({type: types.FETCH_REFERRALS})
+      }
+  }
+}
+
+export default connect(mapStateToProps)(AppContainer)
