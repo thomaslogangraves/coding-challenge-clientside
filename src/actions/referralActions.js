@@ -1,21 +1,17 @@
-import { request } from "../utils"
+import axios from 'axios'
+import { FETCH_REFERRALS, ADD_REFERRALS } from './actions'
 
-export const FETCH_REFERRALS = "FETCH_REFERRALS"
-export const FETCH_REFERRALS_SUCCESS = "FETCH_REFERRALS_SUCCESS"
-export const FETCH_REFERRALS_ERROR400 = "FETCH_REFERRALS_ERROR400"
-export const FETCH_REFERRALS_ERROR500 = "FETCH_REFERRALS_ERROR500"
-export const FETCH_REFERRALS_FAILURE = "FETCH_REFERRALS_FAILURE"
+export function addReferrals() {
+  return { type: ADD_REFERRALS }
+}
 
-export function fetchReferrals() {
-  return dispatch => {
-    let url = "https://referly-api.herokuapp.com/referrals.json"
-    dispatch({type: FETCH_REFERRALS})
-    return request(
-      url, {},
-      (json) => { dispatch({type: FETCH_REFERRALS_SUCCESS, res: json}) },
-      (json) => { dispatch({type: FETCH_REFERRALS_ERROR400, res: json}) },
-      (res) => { dispatch({type: FETCH_REFERRALS_ERROR500, res: res}) },
-      (ex) => { dispatch({type: FETCH_REFERRALS_FAILURE, error: ex}) },
-    )
+
+export function getReferrals() {
+  return function (dispatch, getState) {
+    axios.get('https://referly-api.herokuapp.com/referrals.json')
+      .then((response) => {
+        dispatch(addReferrals(response.data))
+      })
+      .catch((error) => console.error('axios error', error))
   }
 }
