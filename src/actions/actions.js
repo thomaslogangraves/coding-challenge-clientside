@@ -1,2 +1,0 @@
-export const FETCH_REFERRALS = "FETCH_REFERRALS"
-export const ADD_REFERRALS = "ADD_REFERRALS"

@@ -1,17 +1,24 @@
 import axios from 'axios'
-import { FETCH_REFERRALS, ADD_REFERRALS } from './actions'
+import * as types from './actionTypes'
 
-export function addReferrals() {
-  return { type: ADD_REFERRALS }
-}
+function requestReferrals() {
+  return {type: types.REQUEST_REFERRALS}
+};
 
+function addReferrals() {
+  return { type: types.ADD_REFERRALS }
+};
 
-export function getReferrals() {
-  return function (dispatch, getState) {
-    axios.get('https://referly-api.herokuapp.com/referrals.json')
-      .then((response) => {
-        dispatch(addReferrals(response.data))
+export function getReferrals(url) {
+  let url = "https://referly-api.herokuapp.com/referrals.json"
+  return function (dispatch) {
+    axios.get(url)
+      .then((response) => dispatch({
+        type: types.FETCH_REFFERALS_SUCCESS,
+        data: response.data
+      }).error((response) => dispatch({
+        type: types.FETCH_REFERRALS_FAILURE,
+        error: response.error
       })
-      .catch((error) => console.error('axios error', error))
   }
-}
+};

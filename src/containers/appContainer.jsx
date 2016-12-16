@@ -2,12 +2,8 @@ import React from "react"
 
 import { connect } from "react-redux"
 
-import * as referralActions from "../actions/referralActions"
 import ReferralComponent from "../components/referrals"
 
-@connect(state => ({
-  referrals: state.referrals,
-}))
 export default class AppContainer extends React.Component {
   componentDidMount() {
     let {dispatch, referrals} = this.props

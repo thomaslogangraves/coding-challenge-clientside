@@ -1,14 +1,21 @@
-import * as referralActions from "../actions/referralActions"
+import * as types from '../actions/actionTypes'
+import { connet } from 'react-redux'
 
 const initialState = {
   isLoadingReferrals: false,
   referrals: undefined,
 }
 
-const rootReducer = (state = initialState, action) => {
+const reduceReferrals = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, {referrals: action.payload})
+}
+
+export const rootReducer = (state = initialState, action) => {
+  console.log(state, action)
   switch (action.type) {
-    case FETCH_REFERRALS:
-      return referrals(state, action)
+    case types.FETCH_REFERRALS:
+      return reduceReferrals(state, action)
     default:
       return state
   }

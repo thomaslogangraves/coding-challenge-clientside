@@ -1,2 +1,7 @@
-import { FETCH_REFERRALS, ADD_REFERRALS } from '../actions/actions'
-export default referrals
+import * as types from './actions/actionTypes'
+
+const addReferrals = (state, action) => {
+  const newReferrals = []
+}
+
+export default addReferrals
