@@ -23,14 +23,12 @@ function receiveError(json) {
 };
 
 export function getReferrals(url) {
-  console.log("inside getReferrals")
 	return function(dispatch) {
 		dispatch(requestData());
 		return axios({
 			url: url,
-			timeout: 20000,
+			timeout: 500,
 			method: 'get',
-			responseType: 'json'
 		})
 			.then(function(response) {
 				dispatch(receiveData(response.data));

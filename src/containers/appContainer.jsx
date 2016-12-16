@@ -5,7 +5,6 @@ import Referral from "../components/referrals"
 
 const AppContainer = React.createClass ({
   componentDidMount() {
-    debugger;
     let {dispatch, referrals, isLoadingReferrals, error} = this.props
     if (!isLoadingReferrals && referrals === undefined) {
       dispatch(referralActions.getReferrals())
@@ -25,8 +24,8 @@ const AppContainer = React.createClass ({
   },
 
   render() {
+    console.log("props:", this.props)
     let { referrals, isLoadingReferrals, error } = this.props
-    console.log("after grabbed", isLoadingReferrals)
     if (isLoadingReferrals || referrals === undefined) {
       return this.renderLoading()
     }
@@ -34,7 +33,6 @@ const AppContainer = React.createClass ({
       <div className="container">
         <div className="row">
           <div className="col-sm-12">
-            <p>{process.env.BASE_API_URL}</p>
             {referrals.referrals !== undefined &&
               <Referral referrals={referrals.referrals} />
             }

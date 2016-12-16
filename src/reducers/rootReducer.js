@@ -1,6 +1,6 @@
 import * as types from '../actions/actionTypes'
 import { combineReducers } from 'redux';
-import { routerStateReducer } from 'redux-react-router';
+import { routerReducer } from 'react-router-redux'
 
 const initialState = {
   isLoadingReferrals: false,
@@ -33,7 +33,7 @@ const reduceReferrals = (state=initialState, action=null) => {
 // }
 
 const rootReducer = combineReducers({
-	router: routerStateReducer,
+	routing: routerReducer,
 	reduceReferrals: reduceReferrals
 });
 

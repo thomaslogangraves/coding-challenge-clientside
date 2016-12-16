@@ -1,21 +1,18 @@
-import React from "react"
 
-export default class Error extends React.Component {
-  render() {
-    let  { referrals } = this.props
-    let referralList = []
-    referrals.forEach((referral, index) => {
-      let ref = (
-        <div key={referral.id}>
-          <h1>{referral.title}</h1>
-          <h1>{referral.clicks}</h1>
-        </div>
-      )
-      referralList.push(ref)
-    })
+import React, {Component} from 'react';
 
-    return (
-      <div>{referralList}</div>
-    )
-  }
-}
+class Error extends Component{
+	constructor(props){
+		super(props);
+	}
+
+	render() {
+		return (
+			<div className='container'>
+				<h1>Data would have gone here</h1>
+			</div>
+		)
+	}
+};
+
+export default Error;

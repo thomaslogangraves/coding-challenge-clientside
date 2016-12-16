@@ -4,22 +4,11 @@ import rootReducer from './reducers/rootReducer'
 
 import { routerStateReducer, reduxReactRouter } from 'redux-react-router';
 
-import createHistory from 'history/lib/createBrowserHistory';
+import createHistory from 'history/createBrowserHistory';
 
-// const store = createStore(rootReducer, compose(
-//   applyMiddleware(thunkMiddleware),
-//   typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : (f) => f
-// ))
-//
-// export default store
+const store = createStore(rootReducer, compose(
+  applyMiddleware(thunkMiddleware),
+  typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : (f) => f
+))
 
-const createAppStore = compose(
-	applyMiddleware(thunkMiddleware),
-	reduxReactRouter({createHistory}),
-)(createStore);
-
-export default function configureStore(initialState){
-	const store = createAppStore(rootReducer, initialState);
-
-	return store;
-};
+export default store
