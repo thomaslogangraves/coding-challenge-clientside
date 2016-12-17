@@ -1,3 +1,4 @@
+require('../css/top.css')
 import React from "react"
 import Router, {Link} from 'react-router';
 import { connect } from "react-redux"
@@ -5,17 +6,6 @@ import * as referralActions from '../actions/referralActions'
 import Referral from "../components/referrals"
 import Spinner from '../components/spinner';
 import Header from '../components/header';
-// const AppContainer = React.createClass ({
-//   render() {
-//
-//     }
-//     return (
-//       <div className="container"> </div>
-//     )
-//   }
-// })
-//
-//
 
 
 class AppContainer extends React.Component {
@@ -26,7 +16,7 @@ class AppContainer extends React.Component {
 		const {children} = this.props;
     const {referrals, isLoadingReferrals, error } = this.props
 		return (
-			<div className="container row"> <Header/>{isLoadingReferrals ? <Spinner /> : children}
+			<div className="top container row"> <Header/>{isLoadingReferrals ? <Spinner /> : children}
 		</div>
 		);
 	}

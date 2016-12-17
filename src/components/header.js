@@ -1,4 +1,4 @@
-
+require('../css/header.css')
 import React, {Component} from 'react';
 
 class Header extends Component{
@@ -8,8 +8,8 @@ class Header extends Component{
 
 	render() {
 		return (
-			<div>
-				<h1 className="header">Referly</h1>
+			<div className="header">
+				<h1>Referly</h1>
 			</div>
 		)
 	}

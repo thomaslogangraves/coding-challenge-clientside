@@ -1,3 +1,4 @@
+require('../css/spinner.css')
 import React, {Component} from 'react';
 
 class Spinner extends Component{
@@ -7,7 +8,7 @@ class Spinner extends Component{
 
 	render() {
 		return (
-			<div className='loading'>Loading&#8230;</div>
+			<div className='spinner'>Loading&#8230;</div>
 		)
 	}
 };

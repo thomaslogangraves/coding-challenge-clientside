@@ -1,7 +1,5 @@
 var path = require('path');
 var webpack = require('webpack');
-var combineLoaders = require('webpack-combine-loaders');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'eval',
@@ -21,11 +19,11 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$/,
+      exclude: /(node_modules)/,
       loaders: ['react-hot', 'babel'],
-      include: path.join(__dirname, 'src')
     }, {
       test: /\.css$/,
-      loader: "css-loader!autoprefixer-loader"
+      loader: "style-loader!css-loader"
     },{
       test: /\.(png|jpg|gif)$/,
       loader: "file-loader?name=img/img-[hash:6].[ext]"
