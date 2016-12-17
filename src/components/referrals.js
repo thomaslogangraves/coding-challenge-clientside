@@ -21,7 +21,17 @@ export class Referral extends React.Component {
     })
 
     return (
-      <div className="col s6">{referralList}</div>
+      <div className="col s6">
+        <div className="ref-heading col s12">
+          <span className="ref-heading col s4">name</span>
+          <span className="ref-heading col s3">clicks</span>
+          <span className="ref-heading col s2">edit</span>
+          <span className="ref-heading col s2">delete</span>
+        </div>
+        <div className="col s12">
+            {referralList}
+        </div>
+      </div>
     )
   }
 }
