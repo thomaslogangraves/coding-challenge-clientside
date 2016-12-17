@@ -13,14 +13,10 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/static/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      template: 'index.template.ejs',
-      inject: 'body',
-    })
   ],
   module: {
     loaders: [{
@@ -29,17 +25,13 @@ module.exports = {
       include: path.join(__dirname, 'src')
     }, {
       test: /\.css$/,
-      loader: combineLoaders([
-        {
-          loader: 'style-loader'
-        }, {
-          loader: 'css-loader',
-          query: {
-            modules: true,
-            localIdentName: '[name]__[local]___[hash:base64:5]'
-          }
-        }
-      ])
+      loader: "css-loader!autoprefixer-loader"
+    },{
+      test: /\.(png|jpg|gif)$/,
+      loader: "file-loader?name=img/img-[hash:6].[ext]"
+    },{
+      test: /\.(png|jpg|gif)$/,
+      loader: "url-loader?limit=5000&name=img/img-[hash:6].[ext]"
     }]
   }
 };

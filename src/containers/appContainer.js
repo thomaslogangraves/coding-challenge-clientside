@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import * as referralActions from '../actions/referralActions'
 import Referral from "../components/referrals"
 import Spinner from '../components/spinner';
-import Header from '../components/header';.
+import Header from '../components/header';
 // const AppContainer = React.createClass ({
 //   render() {
 //
