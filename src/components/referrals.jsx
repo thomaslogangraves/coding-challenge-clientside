@@ -1,5 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
+import { Col } from 'react-materialize';
 
 export class Referral extends React.Component {
   render() {

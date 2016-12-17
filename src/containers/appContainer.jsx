@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import * as referralActions from '../actions/referralActions'
 import Referral from "../components/referrals"
 import Spinner from '../components/spinner';
-import { Row, Col } from 'react-materialize';
+
 // const AppContainer = React.createClass ({
 //   render() {
 //
@@ -26,8 +26,8 @@ class AppContainer extends React.Component {
 		const {children} = this.props;
     const {referrals, isLoadingReferrals, error } = this.props
 		return (
-			<Row> {isLoadingReferrals ? <Spinner /> : children}
-        </Row>
+			<div className="container"> {isLoadingReferrals ? <Spinner /> : children}
+		</div>
 		);
 	}
 }
