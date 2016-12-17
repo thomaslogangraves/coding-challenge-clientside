@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import * as referralActions from '../actions/referralActions'
 import Referral from "../components/referrals"
 import Spinner from '../components/spinner';
-
+import Header from '../components/header';.
 // const AppContainer = React.createClass ({
 //   render() {
 //
@@ -26,7 +26,7 @@ class AppContainer extends React.Component {
 		const {children} = this.props;
     const {referrals, isLoadingReferrals, error } = this.props
 		return (
-			<div className="container"> {isLoadingReferrals ? <Spinner /> : children}
+			<div className="container row"> <Header/>{isLoadingReferrals ? <Spinner /> : children}
 		</div>
 		);
 	}

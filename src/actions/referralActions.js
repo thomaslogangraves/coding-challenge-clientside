@@ -6,7 +6,6 @@ export const requestData = () => {
 };
 
 export const receiveData = (json) => {
-	console.log("this is the json:",json.results)
 	return{
 		type: types.FETCH_REFERRALS_SUCCESS,
 		referrals: json.results,

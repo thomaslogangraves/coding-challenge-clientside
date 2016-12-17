@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { Col } from 'react-materialize';
+
 
 export class Referral extends React.Component {
   render() {
@@ -9,7 +9,7 @@ export class Referral extends React.Component {
     let referralList = []
     referrals.forEach((referral, index) => {
       let ref = (
-        <div key={referral.id}>
+        <div className="card" key={referral.id}>
           <h1>{referral.title} {referral.clicks}</h1>
         </div>
       )
@@ -17,7 +17,7 @@ export class Referral extends React.Component {
     })
 
     return (
-      <div>{referralList}</div>
+      <div className="col s6">{referralList}</div>
     )
   }
 }
