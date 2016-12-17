@@ -9,7 +9,7 @@ class Header extends Component{
 	render() {
 		return (
 			<div className="header">
-				<h1>Referly</h1>
+				<h1><a href="/">Referly</a></h1>
 			</div>
 		)
 	}

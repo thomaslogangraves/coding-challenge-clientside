@@ -20,6 +20,14 @@ export const receiveError = (json) => {
 	}
 };
 
+export const createReferral = (referral) => {
+	return dispatch => {
+		let url = "https://referly-api.herokuapp.com/referrals.json"
+		let corsAvoid = "https://cors-anywhere.herokuapp.com/"
+		let newUrl = corsAvoid + url
+	}
+}
+
 export const fetchReferrals = () => {
   return dispatch => {
     dispatch(requestData())

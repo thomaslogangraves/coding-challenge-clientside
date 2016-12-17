@@ -3,7 +3,6 @@ import React from "react"
 import Router, {Link} from 'react-router';
 import { connect } from "react-redux"
 import * as referralActions from '../actions/referralActions'
-import Referral from "../components/referrals"
 import Spinner from '../components/spinner';
 import Header from '../components/header';
 
@@ -15,6 +14,7 @@ class AppContainer extends React.Component {
 	render() {
 		const {children} = this.props;
     const {referrals, isLoadingReferrals, error } = this.props
+		console.log(this.props)
 		return (
 			<div className="top container row"> <Header/>{isLoadingReferrals ? <Spinner /> : children}
 		</div>

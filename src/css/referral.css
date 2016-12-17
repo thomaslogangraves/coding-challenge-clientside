@@ -2,4 +2,19 @@
   padding: 10px;
   font-weight: 300;
   font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.referral span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ref-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
