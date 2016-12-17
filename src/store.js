@@ -1,3 +1,14 @@
-import { createStore } from 'redux';
-import referrals from './reducers/referrals'
-export default createStore(referrals)
+import { createStore, compose, applyMiddleware } from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import rootReducer from './reducers/rootReducer'
+
+import { routerStateReducer, reduxReactRouter } from 'redux-react-router';
+
+import createHistory from 'history/createBrowserHistory';
+
+const store = createStore(rootReducer, compose(
+  applyMiddleware(thunkMiddleware),
+  typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : (f) => f
+))
+
+export default store
