@@ -1,61 +1,41 @@
 import React from "react"
+import Router, {Link} from 'react-router';
 import { connect } from "react-redux"
 import * as referralActions from '../actions/referralActions'
 import Referral from "../components/referrals"
+import Spinner from '../components/spinner';
+import { Row, Col } from 'react-materialize';
+// const AppContainer = React.createClass ({
+//   render() {
+//
+//     }
+//     return (
+//       <div className="container"> </div>
+//     )
+//   }
+// })
+//
+//
 
-const AppContainer = React.createClass ({
-  componentDidMount() {
-    let {dispatch, referrals, isLoadingReferrals, error} = this.props
-    if (!isLoadingReferrals && referrals === undefined) {
-      dispatch(referralActions.getReferrals())
-    }
-  },
 
-  renderLoading() {
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-12">
-            Loading...
-          </div>
-        </div>
-      </div>
-    )
-  },
-
-  render() {
-    console.log("props:", this.props)
-    let { referrals, isLoadingReferrals, error } = this.props
-    if (isLoadingReferrals || referrals === undefined) {
-      return this.renderLoading()
-    }
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-12">
-            {referrals.referrals !== undefined &&
-              <Referral referrals={referrals.referrals} />
-            }
-          </div>
-        </div>
-      </div>
-    )
-  }
-})
-
+class AppContainer extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	render() {
+		const {children} = this.props;
+    const {referrals, isLoadingReferrals, error } = this.props
+		return (
+			<Row> {isLoadingReferrals ? <Spinner /> : children}
+        </Row>
+		);
+	}
+}
 const mapStateToProps = (state) => (
-  { referrals: state.referrals,
-    isLoadingReferrals: state.isLoadingReferrals,
-    error: state.error
+  { isLoadingReferrals: state.referrals.isLoadingReferrals,
+    error: state.referrals.error,
+    referrals: state.referrals.referrals,
   }
 )
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-      getReferrals () {
-        dispatch({type: types.FETCH_REFERRALS})
-      }
-  }
-}
 
 export default connect(mapStateToProps)(AppContainer)

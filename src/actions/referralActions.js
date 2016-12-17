@@ -1,41 +1,34 @@
-import axios from 'axios'
 import * as types from './actionTypes'
+import fetch from 'isomorphic-fetch'
 
-
-import { pushState } from 'redux-react-router';
-
-function requestData() {
+export const requestData = () => {
 	return {type: types.FETCH_REFERRALS}
 };
 
-function receiveData(json) {
+export const receiveData = (json) => {
+	console.log("this is the json:",json.results)
 	return{
 		type: types.FETCH_REFERRALS_SUCCESS,
-		data: json
+		referrals: json.results,
+		receivedAt: Date.now()
 	}
 };
 
-function receiveError(json) {
+export const receiveError = (json) => {
 	return {
 		type: types.FETCH_REFERRALS_FAILURE,
-		data: json
+		referrals: json
 	}
 };
 
-export function getReferrals(url) {
-	return function(dispatch) {
-		dispatch(requestData());
-		return axios({
-			url: url,
-			timeout: 500,
-			method: 'get',
-		})
-			.then(function(response) {
-				dispatch(receiveData(response.data));
-			})
-			.catch(function(response){
-				dispatch(receiveError(response.data));
-				dispatch(pushState(null,'/error'));
-			})
-	}
-};
+export const fetchReferrals = () => {
+  return dispatch => {
+    dispatch(requestData())
+		let url = "https://referly-api.herokuapp.com/referrals.json"
+		let corsAvoid = "https://cors-anywhere.herokuapp.com/"
+		let newUrl = corsAvoid + url
+    return fetch(newUrl)
+      .then(response => response.json())
+      .then(json => dispatch(receiveData(json)))
+  }
+}

@@ -17,12 +17,12 @@
   "author": "thomasgraves",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.15.3",
     "es6-promise": "^4.0.5",
     "history": "^4.5.0",
     "lodash": "^4.17.2",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
+    "react-materialize": "^0.17.6",
     "react-redux": "^5.0.1",
     "react-router": "^3.0.0",
     "react-router-redux": "^4.0.7",
