@@ -2,15 +2,17 @@ require('../css/referral.css')
 import React from "react"
 import { connect } from "react-redux"
 import Referral from './referral'
+import ReferralForm from './referralForm'
 
 export class ReferralList extends React.Component {
   constructor() {
     super();
   }
   render() {
-    let  { referrals } = this.props
+    let  { referrals, dispatch } = this.props
     return (
       <div className="col s6">
+        <ReferralForm  dispatch={dispatch}/>
         <div className="ref-heading col s12">
           <span className="ref-heading col s4">name</span>
           <span className="ref-heading col s3">clicks</span>

@@ -8,6 +8,7 @@ import store from './store';
 import AppContainer from "./containers/appContainer";
 import Error from './components/error';
 import Referral from './components/referral';
+import ReferralForm from './components/referralForm';
 import ReferralList from './components/referralList';
 import ReferralDetail from './components/referralDetail';
 import { fetchReferrals } from './actions/referralActions';
@@ -25,6 +26,7 @@ ReactDOM.render(
         <Router history={history}>
           <Route component={AppContainer}>
             <Route path="/" component={ReferralList} onEnter={loadData}>
+							<Route component={ReferralForm} />
 							<Route component={Referral} />
 						</Route>
             <Route path="/landing/:referralTitle" component={ReferralDetail} onEnter={loadData} />

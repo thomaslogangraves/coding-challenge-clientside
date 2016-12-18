@@ -2,7 +2,6 @@ require('../css/top.css')
 import React from "react"
 import Router, {Link} from 'react-router';
 import { connect } from "react-redux"
-import * as referralActions from '../actions/referralActions'
 import Spinner from '../components/spinner';
 import Header from '../components/header';
 
