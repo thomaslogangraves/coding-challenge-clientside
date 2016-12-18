@@ -9,10 +9,24 @@ const initialState = {
 }
 
 const createReferralState = {
-  referralSent: false,
-  referralCreated: false,
+  isCreateReferralSent: false,
+  isReferralCreated: false,
   error: false,
-  newReferral: undefined
+  createdReferral: undefined
+}
+
+const deleteReferralState = {
+  isDeleteReferralSent: false,
+  isReferralDeleted: false,
+  error: false,
+  deletedReferral: undefined
+}
+
+const editReferralState = {
+  isEditReferralSent: false,
+  isReferralEdited: false,
+  error: false,
+  editedReferral: undefined
 }
 
 const referralReducer = (state=initialState, action = null) => {
@@ -31,11 +45,37 @@ const referralReducer = (state=initialState, action = null) => {
 const createReferralReducer = (state=createReferralState, action) => {
   switch(action.type) {
     case types.REQ_CREATE_REFERRAL:
-      return Object.assign({}, state, { referralSent: true, error: false });
+      return Object.assign({}, state, { isCreateReferralSent: true, error: false });
     case types.CREATE_REFERRAL_SUCCESS:
-      return Object.assign({}, state, { referralSent: true, error: false, newReferral: action.referral, referralCreated: true});
+      return Object.assign({}, state, { isCreateReferralSent: true, error: false, createdReferral: action.createdReferral, isReferralCreated: true});
     case types.CREATE_REFERRAL_FAILURE:
-      return Object.assign({}, state, { referralSent: true, error: true, referralCreated: false});
+      return Object.assign({}, state, { isCreateReferralSent: false, error: true, isReferralCreated: false});
+    default:
+      return state;
+  }
+}
+
+const editReferralReducer = (state=editReferralState, action) => {
+  switch(action.type) {
+    case types.REQ_CREATE_REFERRAL:
+      return Object.assign({}, state, { isEditReferralSent: true, error: false });
+    case types.CREATE_REFERRAL_SUCCESS:
+      return Object.assign({}, state, { isEditReferralSent: true, error: false, editedReferral: action.editedReferral, isReferralEdited: true});
+    case types.CREATE_REFERRAL_FAILURE:
+      return Object.assign({}, state, { isEditReferralSent: false, error: true, isReferralEdited: false});
+    default:
+      return state;
+  }
+}
+
+const deleteReferralReducer = (state=deleteReferralState, action) => {
+  switch(action.type) {
+    case types.REQ_DELETE_REFERRAL:
+      return Object.assign({}, state, { isDeleteReferralSent: true, error: false });
+    case types.DELETE_REFERRAL_SUCCESS:
+      return Object.assign({}, state, { isDeleteReferralSent: true, error: false, deletedReferral: action.deletedReferral, isReferralDeleted: true});
+    case types.DELETE_REFERRAL_FAILURE:
+      return Object.assign({}, state, { isDeleteReferralSent: false, error: true, isReferralDeleted: false});
     default:
       return state;
   }
@@ -44,7 +84,8 @@ const createReferralReducer = (state=createReferralState, action) => {
 const rootReducer = combineReducers({
 	routing: routerReducer,
 	referrals: referralReducer,
-  createReferral: createReferralReducer
+  createdReferral: createReferralReducer
+  deletedReferral: deletedReferralReducer
 });
 
 export default rootReducer

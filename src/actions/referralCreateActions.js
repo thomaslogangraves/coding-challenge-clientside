@@ -5,10 +5,10 @@ export const reqCreateReferral = () => {
 	return {type: types.REQ_CREATE_REFERRAL}
 };
 
-export const createReferralSucess = (json) => {
+export const createReferralSucess = (createdReferral) => {
 	return{
 		type: types.CREATE_REFERRAL_SUCCESS,
-		referral: json,
+		createdReferral: createdReferral,
 		receivedAt: Date.now()
 	}
 };
@@ -31,7 +31,7 @@ export const createReferral = (referral) => {
 		headers: new Headers({
 			'Content-Type': 'application/json'
 		})
-	});
+	})
 		return fetch(request)
 		.then(response => response.json())
 		.then(json => dispatch(createReferralSucess(json)))

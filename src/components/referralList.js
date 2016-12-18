@@ -8,10 +8,14 @@ class ReferralList extends React.Component {
   openModal(referral) {
     console.log("top level referral:", referral)
   }
+  closeModal() {
+
+  }
   render() {
-    let  { referrals, dispatch, newReferral} = this.props
-    if(newReferral != undefined) {
-      referrals.push(newReferral)
+    let  { referrals, dispatch, createdReferral, deletedReferral} = this.props
+    ""
+    if(createdReferral != undefined) {
+      referrals.push(createdReferral)
     }
     return (
       <div className="col s6">
@@ -26,6 +30,7 @@ class ReferralList extends React.Component {
             {referrals.map((referral, i) =>
               <div key={referral.id}>
                 <Referral
+                  dispatch={dispatch}
                   referral={referral}
                   openModal={this.openModal}
                 />
@@ -39,7 +44,8 @@ class ReferralList extends React.Component {
 const mapStateToProps = (state) => (
   {
     referrals: state.referrals.referrals,
-    newReferral: state.createReferral.newReferral
+    createdReferral: state.createdReferral.createdReferral
+    deletedReferral: state.createdReferral.deletedReferral
   }
 )
 
