@@ -5,8 +5,8 @@ import Referral from './referral'
 import ReferralForm from './referralForm'
 
 class ReferralList extends React.Component {
-  constructor() {
-    super();
+  openModal(referral) {
+    console.log("top level referral:", referral)
   }
   render() {
     let  { referrals, dispatch, newReferral} = this.props
@@ -27,6 +27,7 @@ class ReferralList extends React.Component {
               <div key={referral.id}>
                 <Referral
                   referral={referral}
+                  openModal={this.openModal}
                 />
               </div>
             )}
