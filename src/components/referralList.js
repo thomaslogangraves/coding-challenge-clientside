@@ -9,7 +9,10 @@ export class ReferralList extends React.Component {
     super();
   }
   render() {
-    let  { referrals, dispatch } = this.props
+    let  { referrals, dispatch, newReferral} = this.props
+    if(newReferral != undefined) {
+      referrals.push(newReferral)
+    }
     return (
       <div className="col s6">
         <ReferralForm  dispatch={dispatch}/>
@@ -35,6 +38,7 @@ export class ReferralList extends React.Component {
 const mapStateToProps = (state) => (
   {
     referrals: state.referrals.referrals,
+    newReferral: state.createReferral.newReferral
   }
 )
 

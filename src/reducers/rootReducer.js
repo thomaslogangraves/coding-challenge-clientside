@@ -11,7 +11,8 @@ const initialState = {
 const createReferralState = {
   referralSent: false,
   referralCreated: false,
-  error: false
+  error: false,
+  newReferral: undefined
 }
 
 const referralReducer = (state=initialState, action = null) => {
@@ -32,7 +33,7 @@ const createReferralReducer = (state=createReferralState, action) => {
     case types.REQ_CREATE_REFERRAL:
       return Object.assign({}, state, { referralSent: true, error: false });
     case types.CREATE_REFERRAL_SUCCESS:
-      return Object.assign({}, state, { referralSent: true, error: false, referralCreated: true});
+      return Object.assign({}, state, { referralSent: true, error: false, newReferral: action.referral, referralCreated: true});
     case types.CREATE_REFERRAL_FAILURE:
       return Object.assign({}, state, { referralSent: true, error: true, referralCreated: false});
     default:

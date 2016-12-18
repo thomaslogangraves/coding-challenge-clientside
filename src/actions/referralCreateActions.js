@@ -6,10 +6,9 @@ export const reqCreateReferral = () => {
 };
 
 export const createReferralSucess = (json) => {
-  console.log(json)
 	return{
 		type: types.CREATE_REFERRAL_SUCCESS,
-		referrals: json.results,
+		referral: json,
 		receivedAt: Date.now()
 	}
 };
@@ -23,8 +22,12 @@ export const createReferralError = (json) => {
 
 export const createReferral = (referral) => {
 	return dispatch => {
+		console.log(referral)
 	let request = new Request("https://referly-api.herokuapp.com/referrals/", {
 		method: 'POST',
+		body: JSON.stringify({
+            title: referral
+        }),
 		headers: new Headers({
 			'Content-Type': 'application/json'
 		})
