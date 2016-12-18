@@ -6,10 +6,6 @@ import Referral from './referral'
 export class ReferralList extends React.Component {
   constructor() {
     super();
-    this.passReferral = this.passReferral.bind(this);
-  }
-  passReferral(referral) {
-    this.passToReferralDetail(referral)
   }
   render() {
     let  { referrals } = this.props
@@ -25,7 +21,6 @@ export class ReferralList extends React.Component {
             {referrals.map((referral, i) =>
               <div key={referral.id}>
                 <Referral
-                  passReferral = {this.passReferral}
                   referral={referral}
                 />
               </div>

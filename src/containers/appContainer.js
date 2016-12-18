@@ -10,7 +10,6 @@ import Header from '../components/header';
 class AppContainer extends React.Component {
 	constructor(props) {
 		super(props);
-		this.passToReferralDetail = this.passToReferralDetail.bind(this)
 	}
 	render() {
 		const {children} = this.props;

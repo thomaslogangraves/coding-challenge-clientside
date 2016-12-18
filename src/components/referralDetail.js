@@ -1,22 +1,29 @@
+require('../css/referralDetail.css')
 import React from "react"
 import { connect } from "react-redux"
 
-export default class ReferralDetail extends React.Component {
+export class ReferralDetail extends React.Component {
   render() {
-    let  { referrals } = this.props
-    let referralList = []
-    referrals.forEach((referral, index) => {
-      let ref = (
-        <div key={referral.id}>
-          <h1>{referral.title}</h1>
-          <h1>{referral.clicks}</h1>
-        </div>
-      )
-      referralList.push(ref)
-    })
-
+    let searchReferral = this.props.params.referralTitle
+    let { referrals } = this.props
+    let referral = (referrals.filter(referral => referral.title === searchReferral))[0]
+    console.log(referral)
     return (
-      <div>{referralList}</div>
+      <div>
+        <div className="referralDetail row">
+          <div className="col s12"></div>
+          <span className="col s10 offset-s2">{referral.title} are the best!</span>
+          <span className="col s6 offset-s2">Come join us at Referly!</span>
+        </div>
+      </div>
     )
   }
 }
+
+const mapStateToProps = (state) => (
+  {
+    referrals: state.referrals.referrals,
+  }
+)
+
+export default connect(mapStateToProps)(ReferralDetail)
