@@ -10,11 +10,11 @@ import Header from '../components/header';
 class AppContainer extends React.Component {
 	constructor(props) {
 		super(props);
+		this.passToReferralDetail = this.passToReferralDetail.bind(this)
 	}
 	render() {
 		const {children} = this.props;
     const {referrals, isLoadingReferrals, error } = this.props
-		console.log(this.props)
 		return (
 			<div className="top container row"> <Header/>{isLoadingReferrals ? <Spinner /> : children}
 		</div>

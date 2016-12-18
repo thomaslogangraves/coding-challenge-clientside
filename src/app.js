@@ -27,7 +27,7 @@ ReactDOM.render(
             <Route path="/" component={ReferralList} onEnter={loadData}>
 							<Route component={Referral} />
 						</Route>
-            <Route path="/landing" component={ReferralDetail}/>
+            <Route path="/landing/:referralTitle" component={ReferralDetail} onEnter={loadData} />
             <Route path="/error" component={Error}/>
           </Route>
         </Router>

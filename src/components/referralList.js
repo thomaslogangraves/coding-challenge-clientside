@@ -4,8 +4,14 @@ import { connect } from "react-redux"
 import Referral from './referral'
 
 export class ReferralList extends React.Component {
+  constructor() {
+    super();
+    this.passReferral = this.passReferral.bind(this);
+  }
+  passReferral(referral) {
+    this.passToReferralDetail(referral)
+  }
   render() {
-    console.log("referral props:", this.props)
     let  { referrals } = this.props
     return (
       <div className="col s6">
@@ -19,6 +25,7 @@ export class ReferralList extends React.Component {
             {referrals.map((referral, i) =>
               <div key={referral.id}>
                 <Referral
+                  passReferral = {this.passReferral}
                   referral={referral}
                 />
               </div>
