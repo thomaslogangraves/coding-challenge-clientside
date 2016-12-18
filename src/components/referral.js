@@ -2,7 +2,7 @@ require('../css/top.css')
 import React from 'react';
 
 
-export class Referral extends React.Component {
+class Referral extends React.Component {
   constructor() {
     super();
   }

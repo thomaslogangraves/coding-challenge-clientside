@@ -2,7 +2,7 @@ require('../css/referralDetail.css')
 import React from "react"
 import { connect } from "react-redux"
 
-export class ReferralDetail extends React.Component {
+class ReferralDetail extends React.Component {
   render() {
     let searchReferral = this.props.params.referralTitle
     let { referrals } = this.props

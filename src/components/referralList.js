@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import Referral from './referral'
 import ReferralForm from './referralForm'
 
-export class ReferralList extends React.Component {
+class ReferralList extends React.Component {
   constructor() {
     super();
   }

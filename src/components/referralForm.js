@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import createReferral from '../actions/referralCreateActions'
 
-class ReferralForm extends Component{
+class ReferralForm extends React.Component{
 	constructor(props){
 		super(props);
     this.handleCreate = this.handleCreate.bind(this)
