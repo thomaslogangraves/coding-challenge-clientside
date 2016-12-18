@@ -11,7 +11,6 @@ class ReferralForm extends Component{
     event.preventDefault();
     let title = event.target.parentNode.firstChild.value
     let { dispatch } = this.props
-    console.log("ref create:", createReferral)
     dispatch(createReferral(title))
   }
 

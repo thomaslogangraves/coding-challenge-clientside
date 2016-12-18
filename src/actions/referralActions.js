@@ -26,7 +26,7 @@ export const fetchReferrals = () => {
 		let url = "https://referly-api.herokuapp.com/referrals.json"
 		let corsAvoid = "https://cors-anywhere.herokuapp.com/"
 		let newUrl = corsAvoid + url
-		return fetch(newUrl)
+		return fetch(url)
 		.then(response => response.json())
 		.then(json => dispatch(receiveData(json)))
 	}

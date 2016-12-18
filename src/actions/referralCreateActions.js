@@ -25,8 +25,6 @@ export const createReferral = (referral) => {
 	return dispatch => {
 	let request = new Request("https://referly-api.herokuapp.com/referrals/", {
 		method: 'POST',
-		mode: 'cors',
-		redirect: 'follow',
 		headers: new Headers({
 			'Content-Type': 'application/json'
 		})
