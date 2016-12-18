@@ -22,9 +22,22 @@ export const receiveError = (json) => {
 
 export const createReferral = (referral) => {
 	return dispatch => {
-		let url = "https://referly-api.herokuapp.com/referrals.json"
-		let corsAvoid = "https://cors-anywhere.herokuapp.com/"
-		let newUrl = corsAvoid + url
+	let request = new Request("https://referly-api.herokuapp.com/referrals.json", {
+		method: 'POST',
+		mode: 'cors',
+		redirect: 'follow',
+		headers: new Headers({
+			'Content-Type': 'application/json'
+		})
+	});
+		return fetch(request)
+		.then(json)
+		.then(function (data) {
+				console.log('Request succeeded with JSON response', data);
+			})
+		.catch(function (error) {
+			console.log('Request failed', error);
+		});
 	}
 }
 

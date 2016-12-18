@@ -10,4 +10,8 @@ const store = createStore(rootReducer, compose(
   typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : (f) => f
 ))
 
+store.subscribe(() => {
+  console.log("store changed", store.getState())
+})
+
 export default store
