@@ -4,16 +4,7 @@ import fetch from 'isomorphic-fetch'
 export const openEdit = (referral) => {
   return {
     type: types.OPEN_EDIT,
-    isOpen: true
-    referral: referral
-  }
-}
-
-export const closeEdit = (json) => {
-  console.log("edit response:", json)
-  return {
-    type: types.CLOSE_EDIT,
-    isOpen: false
+    referralToEdit: referral
   }
 }
 
@@ -22,9 +13,11 @@ export const reqEditReferral = () => {
 }
 
 export const editReferralSuccess = (editedReferral) => {
+  console.log("edited referral action:", editedReferral);
   return {
     type: types.EDIT_REFERRAL_SUCCESS,
-    editedReferral: editedReferral
+    editedReferral: editedReferral,
+    isOpen: false
   }
 }
 
@@ -52,3 +45,5 @@ export const editReferral = (referralToEdit, editedTitle) => {
 		.then(json => dispatch(editReferralSuccess(json)))
 	}
 }
+
+export default editReferral

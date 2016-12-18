@@ -6,16 +6,16 @@ class Referral extends React.Component {
   constructor(){
     super();
     this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleDeleteReferral = this.handleDeleteReferral.bind(this);
+    this.passDeleteReferral = this.passDeleteReferral.bind(this);
   }
   handleOpenModal(){
     let { referral } = this.props
     this.props.openModal(referral)
   }
 
-  handleDeleteReferral() {
-    let { dispatch, referral } = this.props
-    dispatch(deleteReferral(referral))
+  passDeleteReferral() {
+    let { id } = this.props.referral
+    this.props.handleDeleteReferral(id)
   }
   render(){
     let { referral } = this.props
@@ -24,7 +24,7 @@ class Referral extends React.Component {
         <span className="col s4 flow-text"><a href={"/landing/" + referral.title}>{referral.title}</a></span>
         <span className="col s3 flow-text">{referral.clicks}</span>
         <span className="col s2 waves-effect" onClick={this.handleOpenModal}><i className="small material-icons">mode_edit</i></span>
-        <span className="col s2 waves-effect" onClick={this.handleDeleteReferral}><i className="small material-icons">delete</i></span>
+        <span className="col s2 waves-effect" onClick={this.passDeleteReferral}><i className="small material-icons">delete</i></span>
       </div>
     )
   }

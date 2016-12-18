@@ -5,10 +5,10 @@ export const reqDeleteReferral = () => {
   return{ type: types.REQ_DELETE_REFERRAL }
 }
 
-export const deleteReferralSuccess = (deletedReferral) => {
+export const deleteReferralSuccess = (deletedReferralId) => {
   return {
     type: types.DELETE_REFERRAL_SUCCESS,
-    deletedReferral: deletedReferral
+    deletedReferralId: deletedReferralId
   }
 }
 
@@ -19,20 +19,18 @@ export const deleteReferralFailure = (json) => {
   }
 }
 
-export const deleteReferral = (referralToDelete) => {
+export const deleteReferral = (referralToDeleteId) => {
 	return dispatch => {
-		console.log("referral to delete:", referralToDelete)
-	let request = new Request("https://referly-api.herokuapp.com/referrals/" + referralToDelete.id, {
+	let request = new Request("https://referly-api.herokuapp.com/referrals/" + referralToDeleteId +"/", {
 		method: 'DELETE',
-		body: JSON.stringify({
-            referralToDelete
-        }),
 		headers: new Headers({
 			'Content-Type': 'application/json'
 		})
 	});
 		return fetch(request)
-		.then(response => response.json())
-		.then(json => dispatch(deleteReferralSuccess(json)))
+		.then(response => dispatch(deleteReferralSuccess(referralToDeleteId)))
+		// .then(json => dispatch(deleteReferralSuccess(referralToDelete)))
 	}
 }
+
+export default deleteReferral

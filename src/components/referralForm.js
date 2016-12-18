@@ -1,26 +1,24 @@
 import React from 'react';
-import createReferral from '../actions/referralCreateActions'
 
 class ReferralForm extends React.Component{
 	constructor(props){
 		super(props);
-    this.handleCreate = this.handleCreate.bind(this)
+    this.passCreateReferral = this.passCreateReferral.bind(this)
 	}
 
-  handleCreate(event) {
+  passCreateReferral(event) {
     event.preventDefault();
     let title = event.target.parentNode.firstChild.value
-    let { dispatch } = this.props
-    dispatch(createReferral(title))
+		event.target.parentNode.firstChild.value = ""
+		this.props.handleCreateReferral(title)
   }
 
 	render() {
-    console.log("props:", this.props)
 		return (
 			<div className="form">
 				<form>
           <input className="col s6 offset-s2" type="text" placeholder="referral name"/>
-          <button className="col s2 offset-s1 waves-effect waves-light btn cyan darken-4"type="submit" onClick={this.handleCreate}>Add</button>
+          <button className="col s2 offset-s1 waves-effect waves-light btn cyan darken-4"type="submit" onClick={this.passCreateReferral}>Add</button>
         </form>
 			</div>
 		)

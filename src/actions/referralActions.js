@@ -20,6 +20,13 @@ export const receiveError = (json) => {
 	}
 };
 
+export const handleDeleteReferral = (deletedReferral) => {
+  return {
+    type: types.HANDLE_DELETE_REFERRAL,
+    referralToBeDeleted: deletedReferral
+  }
+}
+
 export const fetchReferrals = () => {
 	return dispatch => {
 		dispatch(requestData())

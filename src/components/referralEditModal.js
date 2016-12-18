@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactCSSTransitionsGroup from 'React.addons.CSSTransitionGroup'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-export class referralEditModal extends React.Component {
+class ReferralEditModal extends React.Component {
   render() {
       if(this.props.isOpen) {
         return(
@@ -16,3 +16,5 @@ export class referralEditModal extends React.Component {
       }
     }
   }
+
+export default ReferralEditModal
