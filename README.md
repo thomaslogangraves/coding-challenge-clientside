@@ -8,13 +8,13 @@ Each referral can be edited or deleted. Clicks are captured when a user clicks o
 ### API Link: [here](https://referly-api.herokuapp.com)  / [github link](https://github.com/thomaslogangraves/coding-challenge)
 
 ### Frameworks / Libraries
--React
--Redux
--React-Router
--Redux-Thunk
--Webpack
--Express
--Babel
+* React
+* Redux
+* React-Router
+* Redux-Thunk
+* Webpack
+* Express
+* Babel
 
 
 ### Known Errors: 
