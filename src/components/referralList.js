@@ -7,6 +7,7 @@ import ReferralEditModal from './referralEditModal'
 import {handleDeleteReferral} from '../actions/referralActions'
 import createReferral from '../actions/referralCreateActions'
 import deleteReferral from '../actions/referralDeleteActions'
+import editReferral from '../actions/referralEditActions'
 import {openEdit} from '../actions/referralEditActions'
 import { Modal, Button } from 'react-materialize'
 
@@ -15,6 +16,7 @@ class ReferralList extends React.Component {
     super();
     this.handleDeleteReferral = this.handleDeleteReferral.bind(this)
     this.handleCreateReferral = this.handleCreateReferral.bind(this)
+    this.handleEditReferral = this.handleEditReferral.bind(this)
     this.openModal = this.openModal.bind(this)
     this.closeModal = this.closeModal.bind(this)
   }
@@ -32,13 +34,17 @@ class ReferralList extends React.Component {
 
   handleCreateReferral(title) {
     let { dispatch } = this.props
-    console.log("in the handle create", title)
     dispatch(createReferral(title))
   }
 
+  handleEditReferral(referral, editedTitle) {
+    let { dispatch } = this.props
+    dispatch(editReferral(referral, editedTitle))
+  }
+
+
   handleDeleteReferral(id){
     let { dispatch } = this.props
-    console.log("in the handle delete", id)
     dispatch(deleteReferral(id))
   }
 
@@ -60,6 +66,7 @@ class ReferralList extends React.Component {
                   handleDeleteReferral={this.handleDeleteReferral}
                   referral={referral}
                   openModal={this.openModal}
+                  handleEditReferral={this.handleEditReferral}
                 />
               </div>
             )}

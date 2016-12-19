@@ -31,7 +31,7 @@ export const editReferralFailure = (json) => {
 export const editReferral = (referralToEdit, editedTitle) => {
 	return dispatch => {
 		console.log(referralToEdit)
-	let request = new Request("https://referly-api.herokuapp.com/referrals/" + referralToEdit.id, {
+	let request = new Request("https://referly-api.herokuapp.com/referrals/" + referralToEdit.id + "/", {
 		method: 'PUT',
 		body: JSON.stringify({
             title: editedTitle
