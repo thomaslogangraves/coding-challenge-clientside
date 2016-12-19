@@ -18,7 +18,6 @@ class Referral extends React.Component {
     event.preventDefault();
     let { referral } = this.props
     let newTitle = event.target.parentNode.parentElement.firstChild.lastChild.firstChild.value
-    console.log("new title:", newTitle)
     this.props.handleEditReferral(referral, newTitle)
   }
   render(){

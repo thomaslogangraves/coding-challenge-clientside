@@ -22,7 +22,6 @@ export const createReferralError = (json) => {
 
 export const createReferral = (referral) => {
 	return dispatch => {
-		console.log(referral)
 	let request = new Request("https://referly-api.herokuapp.com/referrals/", {
 		method: 'POST',
 		body: JSON.stringify({
