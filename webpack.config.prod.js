@@ -24,10 +24,6 @@ module.exports = {
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
-    new HtmlWebpackPlugin({
-      template: 'index.template.ejs',
-      inject: 'body',
-    })
   ],
   module: {
     loaders: [{

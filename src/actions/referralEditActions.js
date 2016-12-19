@@ -41,6 +41,7 @@ export const editReferral = (referralToEdit, editedTitle) => {
 		return fetch(request)
 		.then(response => response.json())
 		.then(json => dispatch(editReferralSuccess(json)))
+    .catch(e => dispatch(editReferralFailure(json)))
 	}
 }
 

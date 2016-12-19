@@ -29,7 +29,6 @@ export const deleteReferral = (referralToDeleteId) => {
 	});
 		return fetch(request)
 		.then(response => dispatch(deleteReferralSuccess(referralToDeleteId)))
-		// .then(json => dispatch(deleteReferralSuccess(referralToDelete)))
 	}
 }
 
