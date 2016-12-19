@@ -6,10 +6,10 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    './src/app'
+    './src/index'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'static'),
     filename: 'bundle.js',
     publicPath: '/static/'
   },
