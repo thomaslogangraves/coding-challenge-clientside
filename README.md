@@ -7,14 +7,24 @@ Each referral can be edited or deleted. Clicks are captured when a user clicks o
 
 ### API Link: [here](https://referly-api.herokuapp.com)  / [github link](https://github.com/thomaslogangraves/coding-challenge)
 
-###Known Errors: 
-####1. Sending referral with no name: a referral sent with no name will cause a key issue.
-####2. Responsiveness is off for 4k monitors
+### Frameworks / Libraries
+-React
+-Redux
+-React-Router
+-Redux-Thunk
+-Webpack
+-Express
+-Babel
 
 
-###Future Features:
-####1. Allow users to log in.
-####2. Dashboard to have list of top ambassadors.
-####3. Dashboard to have sorting methods to find certain referrals.
-####4. Add user auth and protections
-####5. Add user profile to manage referrals and see stats
+### Known Errors: 
+1. Sending referral with no name: a referral sent with no name will cause a key issue.
+2. Responsiveness is off for 4k monitors
+
+
+### Future Features:
+1. Allow users to log in.
+2. Dashboard to have list of top ambassadors.
+3. Dashboard to have sorting methods to find certain referrals.
+4. Add user auth and protections
+5. Add user profile to manage referrals and see stats
