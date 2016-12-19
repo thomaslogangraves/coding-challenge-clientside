@@ -24,13 +24,12 @@ function loadData() {
 
 ReactDOM.render(
       <Provider store={store}>
-					<Router history={history}>
+					<Router history={browserHistory}>
 							<Route component={AppContainer}>
-									<Route path="/"component={ReferralContainer} onEnter={loadData}>
-										<Route component={ReferralForm} />
-										<Route component={Referral} />
-										<Route path="/landing/:referralTitle" component={ReferralDetail} onEnter={loadData}/>
-									</Route>
+									<Route path="/"component={ReferralContainer} onEnter={loadData}/>
+									<Route component={ReferralForm} />
+									<Route component={Referral} />
+									<Route path="/landing/:referralTitle" component={ReferralDetail} onEnter={loadData}/>
 							</Route>
 					</Router>
       </Provider>,
