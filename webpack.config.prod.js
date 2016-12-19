@@ -1,46 +1,45 @@
-var path = require('path');
-var webpack = require('webpack');
-var combineLoaders = require('webpack-combine-loaders');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
-  entry: './src/app.js',
+  devtool: 'source-map',
+
+  entry: [
+    './src/index'
+  ],
+
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'javascripts-[hash].js'
+    path: path.join(__dirname, 'public'),
+    filename: 'bundle.js',
+    publicPath: '/public/'
   },
+
   plugins: [
-    new ExtractTextPlugin('styles-[hash].css'),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
-    }),
+    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
       compress: {
         warnings: false
       }
     }),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    })
   ],
+
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      include: path.join(__dirname, 'src')
-    }, {
-      test: /\.css$/,
-      loader: ExtractTextPlugin.extract(
-        combineLoaders([{
-          loader: 'css-loader',
-          query: {
-            modules: true,
-            localIdentName: '[name]__[local]___[hash:base64:5]'
-          }
-        }])
-      )
-    }]
+    loaders: [
+      { test: /\.js?$/,
+        loader: 'babel',
+        exclude: /node_modules/ },
+      {   test: /\.css$/,
+          loader: "style-loader!css-loader"},
+      { test: /\.png$/,
+        loader: 'file' },
+      { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        loader: 'file'}
+    ]
   }
-};
+}
