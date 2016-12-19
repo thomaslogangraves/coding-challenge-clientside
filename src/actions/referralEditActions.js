@@ -13,7 +13,6 @@ export const reqEditReferral = () => {
 }
 
 export const editReferralSuccess = (editedReferral) => {
-  console.log("edited referral action:", editedReferral);
   return {
     type: types.EDIT_REFERRAL_SUCCESS,
     editedReferral: editedReferral,
@@ -30,7 +29,6 @@ export const editReferralFailure = (json) => {
 
 export const editReferral = (referralToEdit, editedTitle) => {
 	return dispatch => {
-		console.log(referralToEdit)
 	let request = new Request("https://referly-api.herokuapp.com/referrals/" + referralToEdit.id + "/", {
 		method: 'PUT',
 		body: JSON.stringify({

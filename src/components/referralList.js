@@ -17,13 +17,7 @@ class ReferralList extends React.Component {
     this.handleDeleteReferral = this.handleDeleteReferral.bind(this)
     this.handleCreateReferral = this.handleCreateReferral.bind(this)
     this.handleEditReferral = this.handleEditReferral.bind(this)
-    this.openModal = this.openModal.bind(this)
     this.closeModal = this.closeModal.bind(this)
-  }
-  openModal(referral) {
-    let { dispatch } = this.props
-    console.log("top level referral:", referral)
-    dispatch(openEdit(referral))
   }
   closeModal() {
     let { dispatch } = this.props
@@ -51,13 +45,13 @@ class ReferralList extends React.Component {
   render() {
     let { referrals, referralToEdit, isOpen } = this.props
     return (
-      <div className="col s6">
+      <div className="col s12">
         <ReferralForm  handleCreateReferral={this.handleCreateReferral}/>
-        <div className="ref-heading col l12">
-          <span className="ref-heading col l10 m8">name</span>
-          <span className="ref-heading col l7 m4">clicks</span>
-          <span className="ref-heading col l3 m2">edit</span>
-          <span className="ref-heading col l2 m2">delete</span>
+        <div className="ref-heading col s12">
+          <span className="ref-heading col s3 offset-s1 l10 m8">name</span>
+          <span className="ref-heading col s1 offset-s2 l7 m4">clicks</span>
+          <span className="ref-heading col s2 offset-s1 l3 m2">edit</span>
+          <span className="ref-heading col s2 l2 m2">delete</span>
         </div>
         <div className="col s12">
             {referrals.map((referral, i) =>
@@ -65,7 +59,6 @@ class ReferralList extends React.Component {
                 <Referral
                   handleDeleteReferral={this.handleDeleteReferral}
                   referral={referral}
-                  openModal={this.openModal}
                   handleEditReferral={this.handleEditReferral}
                 />
               </div>

@@ -44,13 +44,16 @@ const referralReducer = (state=initialState, action = null) => {
   case types.FETCH_REFERRALS_SUCCESS:
     return Object.assign({}, state, { isLoadingReferrals: false, referrals: action.referrals, error: false });
   case types.CREATE_REFERRAL_SUCCESS:
-    let referralsWithNew = state.referrals.push(action.createdReferral)
-    return Object.assign({}, state, { referrals: state.referrals});
+    let referralsWithNew = state.referrals.concat(action.createdReferral)
+    console.log("new referrals:", referralsWithNew)
+    return Object.assign({}, state, { referrals: referralsWithNew});
   case types.DELETE_REFERRAL_SUCCESS:
     let referralId = action.deletedReferralId
     let newReferrals = state.referrals.filter(referral => referral.id !== referralId)
     return Object.assign({}, state, { referrals: newReferrals});
   case types.EDIT_REFERRAL_SUCCESS:
+    let { id } = action.editedReferral
+    let editedReferrals = state.referrals.filter(referral => referral.id !== id).concat(action.editedReferral)
     return Object.assign({}, state, {referrals: editedReferrals})
   case types.OPEN_EDIT:
     return Object.assign({}, state, {isOpen: true, referralToEdit: action.referralToEdit})
