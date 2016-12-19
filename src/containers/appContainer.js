@@ -14,7 +14,7 @@ class AppContainer extends React.Component {
 		const {children} = this.props;
     const {referrals, isLoadingReferrals, error } = this.props
 		return (
-			<div className="top container row"> <Header/>{isLoadingReferrals ? <Spinner /> : children}
+			<div className="top container"> <Header/>{isLoadingReferrals ? <Spinner /> : children}
 		</div>
 		);
 	}

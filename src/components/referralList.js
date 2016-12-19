@@ -45,15 +45,15 @@ class ReferralList extends React.Component {
   render() {
     let { referrals, referralToEdit, isOpen } = this.props
     return (
-      <div className="col s12">
+      <div className="row">
         <ReferralForm  handleCreateReferral={this.handleCreateReferral}/>
-        <div className="ref-heading col s12">
-          <span className="ref-heading col s3 offset-s1 l10 m8">name</span>
-          <span className="ref-heading col s1 offset-s2 l7 m4">clicks</span>
-          <span className="ref-heading col s2 offset-s1 l3 m2">edit</span>
-          <span className="ref-heading col s2 l2 m2">delete</span>
+        <div className="ref-heading col s12 m12 l12">
+          <span className="ref-heading col s3 m1 l1 offset-s1 flow-text">name</span>
+          <span className="ref-heading col s2 offset-s1 m4 flow-text">clicks</span>
+          <span className="ref-heading col s2 offset-s1 m1 flow-text">edit</span>
+          <span className="ref-heading col s2 m1 flow-text">delete</span>
         </div>
-        <div className="col s12">
+        <div>
             {referrals.map((referral, i) =>
               <div key={referral.id}>
                 <Referral

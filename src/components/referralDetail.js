@@ -12,8 +12,9 @@ class ReferralDetail extends React.Component {
       <div>
         <div className="referralDetail row">
           <div className="col s12"></div>
-          <span className="col s10 offset-s2">{referral.title} are the best!</span>
-          <span className="col s6 offset-s2">Come join us at Referly!</span>
+          <span className="col s9 m12 push-m3 l12 push-l3 flow-text">{referral.title} are the best!</span>
+          <span className="col s9 m12 push-m3 l12 push-l3 flow-text">Come join us at Referly!</span>
+          <img className="col s8 push-s2 m6 push-m3 l6 push-l3" src="https://lh3.googleusercontent.com/-pzas1Rsj5K4/Vn0-w_vlvLI/AAAAAAAAL7E/YCiqwcruYxc/s0/holiday-octocat.png"></img>
         </div>
       </div>
     )
