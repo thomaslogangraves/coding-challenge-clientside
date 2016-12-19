@@ -5,7 +5,7 @@ Each referral can be edited or deleted. Clicks are captured when a user clicks o
 
 ### Heroku Link: [here](https://referly-client.herokuapp.com)
 
-### API Link: [here](https://referly-api.herokuapp.com)
+### API Link: [here](https://referly-api.herokuapp.com)  / [github link](https://github.com/thomaslogangraves/coding-challenge)
 
 ###Known Errors: 
 ####1. Sending referral with no name: a referral sent with no name will cause a key issue.
