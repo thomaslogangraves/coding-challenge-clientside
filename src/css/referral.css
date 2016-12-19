@@ -1,0 +1,32 @@
+.referral {
+  color: #ffffff;
+  font-weight: 300;
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  height: 150%;
+}
+
+.referral span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2em;
+}
+
+.ref-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+i.icon-black {
+  color: black;
+}
+
+.diver {
+  margin-left: 2px;
+}

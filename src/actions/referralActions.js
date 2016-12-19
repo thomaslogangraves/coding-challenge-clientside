@@ -6,7 +6,6 @@ export const requestData = () => {
 };
 
 export const receiveData = (json) => {
-	console.log("this is the json:",json.results)
 	return{
 		type: types.FETCH_REFERRALS_SUCCESS,
 		referrals: json.results,
@@ -21,14 +20,21 @@ export const receiveError = (json) => {
 	}
 };
 
+export const handleDeleteReferral = (deletedReferral) => {
+  return {
+    type: types.HANDLE_DELETE_REFERRAL,
+    referralToBeDeleted: deletedReferral
+  }
+}
+
 export const fetchReferrals = () => {
-  return dispatch => {
-    dispatch(requestData())
+	return dispatch => {
+		dispatch(requestData())
 		let url = "https://referly-api.herokuapp.com/referrals.json"
 		let corsAvoid = "https://cors-anywhere.herokuapp.com/"
 		let newUrl = corsAvoid + url
-    return fetch(newUrl)
-      .then(response => response.json())
-      .then(json => dispatch(receiveData(json)))
-  }
+		return fetch(url)
+		.then(response => response.json())
+		.then(json => dispatch(receiveData(json)))
+	}
 }
