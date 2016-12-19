@@ -4,12 +4,13 @@ import Router, {Link} from 'react-router';
 import { connect } from "react-redux"
 import Spinner from '../components/spinner';
 import Header from '../components/header';
-
+import fetchReferrals from '../actions/referralActions'
 
 class AppContainer extends React.Component {
 	constructor(props) {
 		super(props);
 	}
+
 	render() {
 		const {children} = this.props;
     const {referrals, isLoadingReferrals, error } = this.props

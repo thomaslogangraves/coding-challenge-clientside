@@ -13,7 +13,8 @@ import ReferralContainer from './containers/referralContainer';
 import ReferralDetail from './components/referralDetail';
 import { fetchReferrals } from './actions/referralActions';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
+import { syncHistoryWithStore } from 'react-router-redux';
+
 
 const history = syncHistoryWithStore(browserHistory, store)
 
@@ -23,16 +24,15 @@ function loadData() {
 
 ReactDOM.render(
       <Provider store={store}>
-        <Router history={history}>
-          <Route component={AppContainer}>
-            <Route path="/" component={ReferralContainer} onEnter={loadData}>
-							<Route component={ReferralForm} />
-							<Route component={Referral} />
-						</Route>
-            <Route path="/landing/:referralTitle" component={ReferralDetail} onEnter={loadData} />
-            <Route path="/error" component={Error}/>
-          </Route>
-        </Router>
+					<Router history={history}>
+							<Route component={AppContainer}>
+									<Route path="/"component={ReferralContainer} onEnter={loadData}>
+										<Route component={ReferralForm} />
+										<Route component={Referral} />
+										<Route path="/landing/:referralTitle" component={ReferralDetail} onEnter={loadData}/>
+									</Route>
+							</Route>
+					</Router>
       </Provider>,
      document.getElementById('App')
 )

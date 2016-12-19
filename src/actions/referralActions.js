@@ -38,3 +38,5 @@ export const fetchReferrals = () => {
 		.then(json => dispatch(receiveData(json)))
 	}
 }
+
+export default fetchReferrals
